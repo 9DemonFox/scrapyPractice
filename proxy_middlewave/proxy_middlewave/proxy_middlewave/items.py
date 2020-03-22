@@ -11,4 +11,5 @@ import scrapy
 class ProxyMiddlewaveItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    ip = scrapy.Field()
     pass

@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-
+from .tools.proxyTool import get_proxy
 
 
 class ProxyMiddlewaveSpiderMiddleware(object):
@@ -79,6 +79,8 @@ class ProxyMiddlewaveDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        # 为request添加代理
+        request.meta['proxy'] = get_proxy()
         return None
 
     def process_response(self, request, response, spider):

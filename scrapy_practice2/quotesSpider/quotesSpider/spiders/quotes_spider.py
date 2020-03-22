@@ -15,5 +15,6 @@ class QuotesSpider(scrapy.Spider):
             }
 
         next_page = response.css('li.next a::attr("href")').get()
+        # 产生下一次请求
         if next_page is not None:
             yield response.follow(next_page, self.parse)

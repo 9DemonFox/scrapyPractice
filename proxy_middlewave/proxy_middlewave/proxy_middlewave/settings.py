@@ -26,7 +26,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     # 禁用默认代理中间件
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
-    'middlewares.ProxyMiddlewaveDownloaderMiddleware': 750,
+    'proxy_middlewave.middlewares.ProxyMiddlewaveDownloaderMiddleware': 750,
     'scrapy.downloadermiddlewares.stats.DownloaderStats': 850,
     'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': 900,
 }
@@ -84,9 +84,14 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'proxy_middlewave.pipelines.ProxyMiddlewavePipeline': 300,
-# }
+# 数字越小越先执行
+
+
+ITEM_PIPELINES = {
+    'proxy_middlewave.pipelines.addHttp': 1,
+    'proxy_middlewave.pipelines.save2csv': 2,
+    'proxy_middlewave.pipelines.ProxyMiddlewavePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
