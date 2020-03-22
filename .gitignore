@@ -1,0 +1,7 @@
+
+/ipproxy/
+
+
+# pycharm
+.idea
+.pytest_cache
